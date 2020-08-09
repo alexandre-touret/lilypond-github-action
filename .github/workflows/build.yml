@@ -10,10 +10,10 @@ jobs:
     steps:
         - uses: actions/checkout@v1
         - name: Build the Docker image for lilypond github action
-          run: docker build -t docker.pkg.github.com/${GITHUB_REPOSITORY}:latest .
+          run: docker build -t docker.pkg.github.com/${GITHUB_REPOSITORY}/lilypond:latest .
         - name: Login against github docker repository
           env:
             GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           run: docker login -u ${GITHUB_ACTOR} -p ${GITHUB_TOKEN} docker.pkg.github.com
         - name: Publish the Docker image 
-          run: docker push docker.pkg.github.com/${GITHUB_REPOSITORY}:latest
+          run: docker push docker.pkg.github.com/${GITHUB_REPOSITORY}/lilypond:latest

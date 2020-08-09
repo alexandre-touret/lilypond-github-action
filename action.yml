@@ -1,0 +1,19 @@
+name: 'Lilypond Generator'
+description: 'Run Lilypond tool with the given set of arguments to generate music sheets'
+author: '@alexandre-touret'
+
+inputs:
+  args:
+    description: 'Arguments for Lilyponid'
+    required: true
+    default: '-h'
+
+runs:
+    using: 'docker'
+    image: 'docker://alexandre-touret/lilypond-github-action/lilypond-github-action'
+    args:
+      - ${{ inputs.args }}
+
+branding:
+  icon: 'underline'
+  color: 'blue'

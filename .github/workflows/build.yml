@@ -1,0 +1,19 @@
+name: Build
+
+on:
+  push:
+    branches:
+      - master
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+        - uses: actions/checkout@v1
+        - name: Build the Docker image for lilypond github action
+          run: docker build -t docker.pkg.github.com/${GITHUB_REPOSITORY}/lilypond-github-action:latest .
+        - name: Login against github docker repository
+          env:
+            GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          run: docker login -u ${GITHUB_ACTOR} -p ${GITHUB_TOKEN} docker.pkg.github.com
+        - name: Publish the Docker image 
+          run: docker push docker.pkg.github.com/${GITHUB_REPOSITORY}/lilypond-github-action:latest

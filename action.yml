@@ -10,7 +10,7 @@ inputs:
 
 runs:
     using: 'docker'
-    image: 'docker://alexandre-touret/lilypond-github-action/lilypond-github-action'
+    image: 'docker://alexandre-touret/lilypond-github-action'
     args:
       - ${{ inputs.args }}
 

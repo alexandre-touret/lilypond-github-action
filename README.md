@@ -1,3 +1,5 @@
+![Build](https://github.com/alexandre-touret/lilypond-github-action/workflows/Build/badge.svg)
+
 # lilypond-github-action
 
 ## Purpose

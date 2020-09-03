@@ -43,17 +43,23 @@ jobs:
       - name: Generate PDF music sheets
         uses: alexandre-touret/lilypond-github-action@master
         with:
-            args: -V -f --pdf ${{ steps.getfile.outputs.files }}
+            args: -V -fpdf -fpng -fmidi ${{ steps.getfile.outputs.files }}
       - name: Push Local Changes
         run: |
           git config --local user.email "${{ secrets.GIT_USERNAME }}"
           git config --local user.name "${{ secrets.GIT_EMAIL }}"
-          git add .
+          mkdir -p ${{github.workspace}}/docs/
+          mv -f *.midi ${{github.workspace}}/docs/
+          mv -f *.pdf ${{github.workspace}}/docs/
+          mv -f *.png ${{github.workspace}}/docs/
+          git add ${{github.workspace}}/docs/
           git commit -m "Add changes" -a
       - name: Push changes
         uses: ad-m/github-push-action@master
         with:
+          branch: gh-pages
           github_token: ${{ secrets.GITHUB_TOKEN }}
+
 ```
 
 In this example, the following actions are executed :
@@ -61,6 +67,6 @@ In this example, the following actions are executed :
 * Generating the sheets using lilypond github action
 * Pushing to github the generating content
 
-In my example, lilypond source files are stored in the /docs folder.
+In my example, lilypond source files are stored in the /src/lilypond folder and moved to /docs.
 It's the gitlab pages root folder.
 

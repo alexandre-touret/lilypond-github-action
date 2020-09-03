@@ -1,8 +1,10 @@
 # lilypond-github-action
 
 ## Purpose
-This github action aims at generating music sheets from [lilypond music score source files](https://lilypond.org).
-It creates and run a Docker container which execute lilypond.
+This github action aims at generating music sheets from [Lilypond music score source files](https://lilypond.org).
+It creates and run a Docker container which execute Lilypond.
+
+It could be useful if you want to store your Lilypond source files in Git and publish them automatically into a web site.
 
 ## Prerequisites
 Learn git, lilypond and [github pages](https://pages.github.com/)  :) 

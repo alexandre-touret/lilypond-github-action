@@ -70,3 +70,7 @@ In this example, the following actions are executed :
 In my example, lilypond source files are stored in the /src/lilypond folder and moved to /docs.
 It's the gitlab pages root folder.
 
+## Need more informations ?
+
+You can check the gh-pages branch of [this running example](https://github.com/alexandre-touret/piano-sheets-as-code). 
+
